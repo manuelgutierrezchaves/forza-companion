@@ -1,10 +1,13 @@
+import RaceCard from '../components/RaceCard'
+import RacesCarousel from '../components/RacesCarousel'
 import TopMenu from '../components/TopMenu'
 
 const RacesPage = () => {
   return (
       <div>
         <TopMenu />
-        <h1>Races</h1>
+        <h1 className="flex justify-center"></h1>
+        <div className="flex justify-center"><RacesCarousel /></div>
       </div>
   )
 }
