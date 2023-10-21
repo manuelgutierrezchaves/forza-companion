@@ -1,19 +1,28 @@
-"use client"
-import React, { useEffect, useState } from 'react';
 import RaceCard from "./RaceCard"
 
-const RacesCarousel = () => {
-  const [races, setRaces] = useState([]);
+async function getRaces() {
+  const res = await fetch('http://localhost:3000/api/races')
 
-  useEffect(() => {
-    fetch('/api/races')
-      .then(response => response.json())
-      .then(data => setRaces(data.data));
-  }, []);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return res.json()
+}
+
+interface Race {
+  circuit: string
+  cars: string
+  maxIr: number
+}
+
+export default async function Page() {
+  const res = await getRaces()
+  const races = res.data
 
   return (
     <div className="carousel carousel-center p-4 space-x-4 rounded-box">
-      {races.map((race, index) => (
+      {races.map((race: Race, index: number) => (
         <div className="carousel-item" key={index}>
           <RaceCard race={race} />
         </div>
@@ -21,5 +30,3 @@ const RacesCarousel = () => {
     </div>
   );
 }
-
-export default RacesCarousel;
