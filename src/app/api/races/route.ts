@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
-let races = [
-  {"circuit": "spa", "cars": "Old LMP", "maxIr": 800},
-  {"circuit": "nurburgring", "cars": "F1", "maxIr": 1200},
-  {"circuit": "yas_marina", "cars": "Muscle", "maxIr": 400}
-]
+const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {
-  return NextResponse.json({ data: races });
+  try {
+    const races = await prisma.race.findMany();
+    return NextResponse.json({ data: races });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ data: [] });
+  }
 }
