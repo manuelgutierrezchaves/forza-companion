@@ -7,7 +7,7 @@ async function getRaces() {
     throw new Error('Failed to fetch data')
   }
 
-  return res.json()
+  return await res.json()
 }
 
 interface Race {
