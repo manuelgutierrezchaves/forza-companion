@@ -1,4 +1,3 @@
-import RaceCard from '../components/RaceCard'
 import RacesCarousel from '../components/RacesCarousel'
 import TopMenu from '../components/TopMenu'
 
