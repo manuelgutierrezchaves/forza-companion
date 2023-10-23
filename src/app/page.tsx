@@ -4,7 +4,6 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div>
-      <TopMenu />
       <h1>Home Page</h1>
       <Image
         src="/car.jpeg"
