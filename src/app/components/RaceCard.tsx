@@ -3,7 +3,7 @@ import Link from "next/link";
 type Race = {
   circuit: string;
   cars: string;
-  maxIr: number;
+  maxir: number;
 };
 
 const RaceCard = ({ race }: { race: Race }) => {
@@ -16,7 +16,7 @@ const RaceCard = ({ race }: { race: Race }) => {
         <h2 className="card-title">{race.circuit}</h2>
         <ul>
           <li>{race.cars}</li>
-          <li>Max class {race.maxIr}</li>
+          <li>Max class {race.maxir}</li>
         </ul>
       </div>
     </Link>
