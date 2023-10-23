@@ -1,5 +1,7 @@
 import RacesCarousel from '../components/RacesCarousel'
 
+export const revalidate = 60; // Refresh db fetch in seconds
+
 export default async function RacesPage() {
   return (
     <div>
