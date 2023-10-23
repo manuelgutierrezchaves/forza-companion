@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 type Race = {
   circuit: string;
@@ -10,7 +11,13 @@ const RaceCard = ({ race }: { race: Race }) => {
   return (
     <Link href={`/races/${race.circuit}`} className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img className="hover:opacity-100 opacity-50" src={`${race.circuit}.jpg`} alt={`${race.circuit} image`} />
+        <Image
+          className="hover:opacity-100 opacity-50"
+          src={`/${race.circuit}.jpg`}
+          alt={`${race.circuit} image`}
+          width={400}
+          height={300}
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{race.circuit}</h2>
