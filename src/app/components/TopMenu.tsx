@@ -11,7 +11,13 @@ const TopMenu = () => {
           </label>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
             <li><Link href="/cars">Cars</Link></li>
-            <li><Link href="/races">Races</Link></li>
+            <li>
+              <a>Races</a>
+              <ul className="p-2">
+                <li><Link href="/spec">Spec</Link></li>
+                <li><Link href="/open">Open</Link></li>
+              </ul>
+            </li>
           </ul>
         </div>
         <Link href="/" className="btn btn-ghost normal-case text-xl">Home</Link>
@@ -20,7 +26,15 @@ const TopMenu = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li><Link href="/cars">Cars</Link></li>
-          <li><Link href="/races">Races</Link></li>
+          <li tabIndex={0}>
+            <details>
+              <summary>Races</summary>
+              <ul className="p-2">
+                <li><Link href="/spec">Spec</Link></li>
+                <li><Link href="/open">Open</Link></li>
+              </ul>
+            </details>
+          </li>
         </ul>
       </div>
 
