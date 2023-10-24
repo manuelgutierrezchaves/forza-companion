@@ -8,10 +8,9 @@ interface Race {
   maxIr: number;
 }
 
-export default async function RacesCarousel() {
-  const result = await getRaces()
+export default async function RacesCarousel(raceType: string) {
+  const result = await getRaces(raceType)
   const { races } = result
-  // const { races } = await getRaces() as { races: Race[] };
 
   return (
     <div className="carousel carousel-center p-4 space-x-4 rounded-box">
