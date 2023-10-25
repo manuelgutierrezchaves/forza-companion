@@ -8,7 +8,11 @@ interface Race {
   maxIr: number;
 }
 
-export default async function RacesCarousel(raceType: string) {
+interface RacesCarouselProps {
+  raceType: string;
+}
+
+export default async function RacesCarousel({ raceType }: RacesCarouselProps ) {
   const result = await getRaces(raceType)
   const { races } = result
 

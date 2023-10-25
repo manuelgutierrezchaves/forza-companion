@@ -8,12 +8,14 @@ type Params = {
   }
 }
 
-export default async function RacesPage({ params: { raceType } }:Params) {
+export default async function RacesPage({ params: { raceType } }: Params) {
+
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex justify-center p-20">
         <RacesCarousel
-          raceType={raceType}/>
+          raceType={raceType}
+        />
       </div>
     </div>
   )
