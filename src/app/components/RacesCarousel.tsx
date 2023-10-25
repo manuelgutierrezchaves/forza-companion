@@ -1,4 +1,4 @@
-import { getRaces } from '../lib/races';
+import { getRaces } from '../lib/getRaces';
 import RaceCard from './RaceCard';
 
 interface Race {
