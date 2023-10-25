@@ -1,5 +1,7 @@
 import { getRace } from "@/app/lib/getRace"
 import Image from "next/image";
+import TireTracker from '@/app/components/TyreUsedBar'
+
 
 type Params = {
   params: {
@@ -31,6 +33,9 @@ export default async function RacePage({ params: { circuit } }: Params) {
             <li>Max IR: {race?.maxir}</li>
             <li>Race Type: {race?.race_type?.race_type}</li>
           </ul>
+          <div className="p-4">
+            <TireTracker tireData={[{"hard": 10}, {"soft": 3}, {"wet": 2}, {"medium": 6}]} />
+          </div>
         </div>
       </div>
     </div>
