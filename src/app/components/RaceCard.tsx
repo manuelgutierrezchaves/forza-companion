@@ -5,6 +5,7 @@ type Race = {
   circuit: string;
   cars: string;
   maxir: number;
+  image: string;
 };
 
 const RaceCard = ({ race }: { race: Race }) => {
@@ -13,7 +14,7 @@ const RaceCard = ({ race }: { race: Race }) => {
       <figure>
         <Image
           className="hover:opacity-100 opacity-50"
-          src={`/${race.circuit}.jpg`}
+          src={`/${race.image}`}
           alt={`${race.circuit} image`}
           width={400}
           height={300}
