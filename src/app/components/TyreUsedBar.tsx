@@ -34,7 +34,7 @@ const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
     }
   };
 
-  const TOTAL_WIDTH = 200;  // Ancho fijo total, cambia según lo necesites
+  const TOTAL_WIDTH = 280;  // Ancho fijo total, cambia según lo necesites
   const computedWidth = (laps / totalLaps) * TOTAL_WIDTH;
 
   return (

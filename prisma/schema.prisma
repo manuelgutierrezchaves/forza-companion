@@ -13,6 +13,7 @@ model Race {
   cars      String
   maxir     Int
   race_type_id   Int
+  image String
 
   race_type      RaceType @relation(fields: [race_type_id], references: [id])  // Añade esta línea para establecer la relación
 
