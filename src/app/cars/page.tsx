@@ -1,4 +1,4 @@
-import TopMenu from '../components/TopMenu'
+import Navbar from '../components/Navbar'
 
 const CarsPage = () => {
   return (

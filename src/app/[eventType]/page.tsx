@@ -1,0 +1,22 @@
+import EventsCarousel from "../components/EventsCarousel";
+
+export const revalidate = 60; // Refresh db fetch in seconds
+
+type Params = {
+  params: {
+    eventType: string
+  }
+}
+
+export default async function EventsPage({ params: { eventType } }: Params) {
+
+  return (
+    <div>
+      <div className="flex justify-center p-20">
+        <EventsCarousel
+          eventType={eventType}
+        />
+      </div>
+    </div>
+  )
+}

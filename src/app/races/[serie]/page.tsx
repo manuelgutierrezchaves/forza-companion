@@ -1,24 +1,26 @@
-import { getRace } from "@/app/lib/getRace"
+import { getRaces } from "@/app/lib/getRaces"
 import Image from "next/image";
 import TireTracker from '@/app/components/TyreUsedBar'
 
 
 type Params = {
   params: {
-    circuit: string
+    serie: string
   }
 }
 
-export default async function RacePage({ params: { circuit } }: Params) {
-  const result = await getRace(circuit)
+export default async function RacePage({ params: { serie } }: Params) {
+  const serieAsNumber = parseInt(serie, 10);
+  const result = await getRaces(serieAsNumber)
   const { race } = result
+  console.log(race)
 
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="flex w-full max-w-screen-lg">
         <div className="w-1/2 p-2">
           <Image
-            src={`/${race?.image}`}
+            src={`/${race[0]?.image}`}
             alt={`${race?.circuit} circuit`}
             width={1200}
             height={900}

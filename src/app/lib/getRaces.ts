@@ -1,15 +1,13 @@
 import prisma from './prisma'
 
-export async function getRaces(raceType: string) {
+export async function getRaces(serie: number) {
 	try {
-		const races = await prisma.race.findMany({
+		const race = await prisma.races.findMany({
 			where: {
-				race_type: {
-					race_type: raceType
-				}
-			}
+				series_id: serie
+			},
 		});
-		return { races }
+		return { race }
 	} catch (error) {
 		return { error }
 	}

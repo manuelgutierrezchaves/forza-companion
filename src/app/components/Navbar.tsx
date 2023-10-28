@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image'
 
-const TopMenu = () => {
+const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -66,4 +66,4 @@ const TopMenu = () => {
   );
 };
 
-export default TopMenu;
+export default Navbar;

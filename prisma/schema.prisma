@@ -7,24 +7,26 @@ datasource db {
   url      = env("POSTGRES_PRISMA_URL")
 }
 
-model Race {
-  id        Int      @id @default(autoincrement())
-  circuit   String
-  cars      String
-  maxir     Int
-  race_type_id   Int
-  image String
+model events {
+  id               Int      @id @default(autoincrement())
+  name             String
+  car_restriction  String
+  length           String
+  type             String
+  image            String
+  races            races[]
 
-  race_type      RaceType @relation(fields: [race_type_id], references: [id])  // Añade esta línea para establecer la relación
-
-  @@map("races")
+  @@map("series")
 }
 
-model RaceType {  // Añade esta sección para definir la tabla de los tipos
-  id    Int    @id @default(autoincrement())
-  race_type  String @unique
 
-  races Race[]
+model races {
+  id            Int      @id @default(autoincrement())
+  laps          Int
+  circuit       String
+  series_id     Int
+  image         String
+  Series        events    @relation(fields: [series_id], references: [id])
 
-  @@map("race_types")
+  @@map("races")
 }
