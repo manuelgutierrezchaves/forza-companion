@@ -29,7 +29,7 @@ const Navbar = () => {
           <li tabIndex={0}>
             <details>
               <summary>Races</summary>
-              <ul className="p-2">
+              <ul className="p-2 z-50">
                 <li><Link href="/spec">Spec</Link></li>
                 <li><Link href="/open">Open</Link></li>
               </ul>
