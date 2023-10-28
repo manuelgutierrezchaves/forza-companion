@@ -4,10 +4,11 @@ interface TireProps {
   type: TireType;
   laps: number;
   totalLaps: number;
+  totalWidth: number;
   position?: 'first' | 'last' | 'both';
 }
 
-const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
+const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position, totalWidth }) => {
   const getColorClass = () => {
     switch (type) {
       case 'hard':
@@ -36,8 +37,7 @@ const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
     }
   };
 
-  const TOTAL_WIDTH = 330;  // Ancho fijo total, cambia según lo necesites
-  const computedWidth = (laps / totalLaps) * TOTAL_WIDTH;
+  const computedWidth = (laps / totalLaps) * totalWidth;
 
   return (
     <div className={`group relative inline-flex items-center border border-black p-1 ${getColorClass()} text-black h-5 ${getRoundedClass()}`} style={{ width: `${computedWidth}px` }}>
@@ -55,9 +55,10 @@ interface TireData {
 
 interface TireTrackerProps {
   tireData: TireData[];
+  totalWidth: number;
 }
 
-const TireTracker: React.FC<TireTrackerProps> = ({ tireData }) => {
+const TireTracker: React.FC<TireTrackerProps> = ({ tireData, totalWidth }) => {
   const totalLaps = tireData.reduce((total, current) => total + Object.values(current)[0], 0);
 
   return (
@@ -66,7 +67,7 @@ const TireTracker: React.FC<TireTrackerProps> = ({ tireData }) => {
         const type = Object.keys(data)[0] as TireType;
         const laps = data[type];
         const position = tireData.length === 1 ? 'both' : idx === 0 ? 'first' : (idx === tireData.length - 1 ? 'last' : undefined);
-        return <Tire key={idx} type={type} laps={laps} totalLaps={totalLaps} position={position} />;
+        return <Tire key={idx} type={type} laps={laps} totalLaps={totalLaps} position={position} totalWidth={totalWidth} />;
       })}
     </div>
   );

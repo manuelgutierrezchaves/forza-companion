@@ -32,7 +32,10 @@ export default async function RacePage({ params: { serie } }: Params) {
               <h2 className="text-lg mb-4">{race.laps} laps</h2>
               <h3 className="text-2xl font-semibold mb-4 pt-8">Recommended tyre strategy</h3>
               <div className="pt-4 pb-4">
-                <TireTracker tireData={race.tyres} />
+                <TireTracker
+                  tireData={race.tyres}
+                  totalWidth={330}
+                />
               </div>
             </div>
           </div>
