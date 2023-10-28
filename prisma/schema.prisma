@@ -27,6 +27,7 @@ model races {
   circuit_configuration   String
   series_id               Int
   image                   String
+  tyres                   Json
   Series                  events    @relation(fields: [series_id], references: [id])
 
   @@map("races")

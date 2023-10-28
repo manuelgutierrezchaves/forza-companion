@@ -14,4 +14,5 @@ CREATE TABLE races (
   circuit_configuration VARCHAR(255),
   series_id INT REFERENCES series(id),
   image VARCHAR(255)
+  tyres JSONB
 );
