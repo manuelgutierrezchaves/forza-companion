@@ -2,16 +2,16 @@ import { getEvents } from '../lib/getEvents';
 import EventCard from './EventCard';
 
 
-interface EventsCarouselProps {
+interface EventsGridProps {
   eventType: string;
 }
 
-export default async function EventsCarousel({ eventType }: EventsCarouselProps ) {
+export default async function EventsGrid({ eventType }: EventsGridProps ) {
   const result = await getEvents(eventType)
   const { series } = result
 
   return (
-    <div className="carousel carousel-center p-4 space-x-4 rounded-box">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {series?.map((serie) => (
         <div className="carousel-item" key={serie.id}>
           <EventCard race={serie} />

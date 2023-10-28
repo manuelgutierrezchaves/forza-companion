@@ -34,7 +34,7 @@ export default async function RacePage({ params: { serie } }: Params) {
               </ul>
               <h3 className="text-2xl font-semibold mb-4">Recommended tyre strategy</h3>
               <div className="pt-4 pb-4">
-                <TireTracker tireData={[{"hard": 10}, {"soft": 10}, {"wet": 2}]} />
+                <TireTracker tireData={[{"medium": 5}, {"soft": 3}]} />
               </div>
             </div>
           </div>
