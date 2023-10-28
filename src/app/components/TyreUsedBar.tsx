@@ -34,12 +34,15 @@ const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
     }
   };
 
-  const TOTAL_WIDTH = 280;  // Ancho fijo total, cambia según lo necesites
+  const TOTAL_WIDTH = 330;  // Ancho fijo total, cambia según lo necesites
   const computedWidth = (laps / totalLaps) * TOTAL_WIDTH;
 
   return (
-    <div className={`inline-flex items-center border border-black p-1 ${getColorClass()} text-black h-5 ${getRoundedClass()}`} style={{ width: `${computedWidth}px` }}>
+    <div className={`group relative inline-flex items-center border border-black p-1 ${getColorClass()} text-black h-5 ${getRoundedClass()}`} style={{ width: `${computedWidth}px` }}>
       <span className="flex-1 text-center text-xs">{laps}</span>
+      <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 p-2 bg-gray-700 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity">
+        {type}
+      </div>
     </div>
   );
 };
