@@ -7,7 +7,8 @@ export async function getRaces(serie: number) {
 				series_id: serie
 			},
 		});
-		return { races }
+		const result = JSON.parse(JSON.stringify(races))
+		return result
 	} catch (error) {
 		return { error }
 	}

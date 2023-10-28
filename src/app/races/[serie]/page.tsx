@@ -8,10 +8,23 @@ type Params = {
   };
 };
 
+interface TireData {
+  [key: string]: number;
+}
+
+interface Race {
+  id: number,
+  laps: number,
+  circuit: string,
+  circuit_configuration: string,
+  series_id: number,
+  image: string,
+  tyres: TireData[]
+}
+
 export default async function RacePage({ params: { serie } }: Params) {
   const serieAsNumber = parseInt(serie, 10);
-  const result = await getRaces(serieAsNumber);
-  const { races } = result;
+  const races: Race[] = await getRaces(serieAsNumber);
 
   return (
     <div className="carousel w-full lg:pt-28">
