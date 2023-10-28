@@ -37,8 +37,8 @@ export default async function RacePage({ params: { serie } }: Params) {
             </div>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href={`#race${index === 0 ? races.length : index}`} className="btn btn-circle">❮</a>
-            <a href={`#race${index === races.length - 1 ? 1 : index + 2}`} className="btn btn-circle">❯</a>
+            <a href={`#race${index === 0 ? races.length : index}`} className="btn btn-circle opacity-40">❮</a>
+            <a href={`#race${index === races.length - 1 ? 1 : index + 2}`} className="btn btn-circle opacity-40">❯</a>
           </div>
         </div>
       ))}
