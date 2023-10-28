@@ -11,6 +11,7 @@ CREATE TABLE races (
   id serial PRIMARY KEY,
   laps INT,
   circuit VARCHAR(255),
+  circuit_configuration VARCHAR(255),
   series_id INT REFERENCES series(id),
   image VARCHAR(255)
 );

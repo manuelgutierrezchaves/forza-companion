@@ -21,12 +21,13 @@ model events {
 
 
 model races {
-  id            Int      @id @default(autoincrement())
-  laps          Int
-  circuit       String
-  series_id     Int
-  image         String
-  Series        events    @relation(fields: [series_id], references: [id])
+  id                      Int      @id @default(autoincrement())
+  laps                    Int
+  circuit                 String
+  circuit_configuration   String
+  series_id               Int
+  image                   String
+  Series                  events    @relation(fields: [series_id], references: [id])
 
   @@map("races")
 }

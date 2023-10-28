@@ -29,10 +29,9 @@ export default async function RacePage({ params: { serie } }: Params) {
             </div>
             <div className="w-1/2 p-8">
               <h2 className="text-3xl font-bold mb-4">{race.circuit}</h2>
-              <ul className="list-disc pl-5 mb-8">
-                <li className="text-lg"><strong>Laps:</strong> {race.laps}</li>
-              </ul>
-              <h3 className="text-2xl font-semibold mb-4">Recommended tyre strategy</h3>
+              <h2 className="text-xl font-semibold mb-4">{race.circuit_configuration}</h2>
+              <h2 className="text-lg mb-4">{race.laps} laps</h2>
+              <h3 className="text-2xl font-semibold mb-4 pt-8">Recommended tyre strategy</h3>
               <div className="pt-4 pb-4">
                 <TireTracker tireData={[{"medium": 5}, {"soft": 3}]} />
               </div>
