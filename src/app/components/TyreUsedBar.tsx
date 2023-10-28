@@ -4,7 +4,7 @@ interface TireProps {
   type: TireType;
   laps: number;
   totalLaps: number;
-  position?: 'first' | 'last';
+  position?: 'first' | 'last' | 'both';
 }
 
 const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
@@ -29,6 +29,8 @@ const Tire: React.FC<TireProps> = ({ type, laps, totalLaps, position }) => {
         return 'rounded-l-full';
       case 'last':
         return 'rounded-r-full';
+      case 'both':
+        return 'rounded-r-full rounded-l-full'
       default:
         return '';
     }
@@ -63,7 +65,7 @@ const TireTracker: React.FC<TireTrackerProps> = ({ tireData }) => {
       {tireData.map((data, idx) => {
         const type = Object.keys(data)[0] as TireType;
         const laps = data[type];
-        const position = idx === 0 ? 'first' : (idx === tireData.length - 1 ? 'last' : undefined);
+        const position = tireData.length === 1 ? 'both' : idx === 0 ? 'first' : (idx === tireData.length - 1 ? 'last' : undefined);
         return <Tire key={idx} type={type} laps={laps} totalLaps={totalLaps} position={position} />;
       })}
     </div>
