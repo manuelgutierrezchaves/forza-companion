@@ -33,7 +33,7 @@ export default async function RacePage({ params: { serie } }: Params) {
           <div className="flex flex-col md:flex-row w-full max-w-screen-lg bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="w-full md:w-1/2 p-2">
               <Image
-                src={`/${race.image}`}
+                src={`/images/${race.image}`}
                 alt={`${race.circuit} circuit`}
                 width={1200}
                 height={900}

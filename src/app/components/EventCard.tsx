@@ -16,7 +16,7 @@ const EventCard = ({ race }: { race: Race }) => {
       <figure>
         <Image
           className="hover:opacity-100 xl:opacity-60 transition-opacity duration-500"
-          src={`/${race.image}`}
+          src={`/images/${race.image}`}
           alt={`${race.image} image`}
           width={400}
           height={300}
