@@ -1,7 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image'
+import { auth, UserButton } from '@clerk/nextjs';
 
 const Navbar = () => {
+  const { userId } = auth()
+  console.log(userId)
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -39,27 +42,18 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end ml-auto">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <Image
-                src="/profile.jpg"
-                alt="Profile picture"
-                width={400}
-                height={400}
-              />
-            </div>
-          </label>
-          <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+        {!userId && (
+          <>
+            <Link href="/sign-in" className='mr-4'>
+              Sign In
+            </Link>
+            <Link href="/sign-up" className='mr-4'>
+              Sign Up
+            </Link>
+          </>
+        )}
+        <UserButton afterSignOutUrl='/'/>
+      </div>
     </div>
   );
 };
