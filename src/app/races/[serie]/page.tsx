@@ -1,25 +1,24 @@
-import { getRaces } from "@/app/lib/getRaces"
+import { getRaces } from "@/app/lib/getRaces";
 import Image from "next/image";
-import TireTracker from '@/app/components/TyreUsedBar'
-
+import TireTracker from '@/app/components/TyreUsedBar';
 
 type Params = {
   params: {
-    serie: string
-  }
-}
+    serie: string;
+  };
+};
 
 export default async function RacePage({ params: { serie } }: Params) {
   const serieAsNumber = parseInt(serie, 10);
-  const result = await getRaces(serieAsNumber)
-  const { races } = result
+  const result = await getRaces(serieAsNumber);
+  const { races } = result;
 
   return (
     <div className="carousel w-full pt-28">
       {races?.map((race, index) => (
         <div key={index} id={`race${index+1}`} className="carousel-item relative w-full flex justify-center items-center">
-          <div className="flex w-full max-w-screen-lg bg-white shadow-lg rounded-lg overflow-hidden">
-            <div className="w-1/2 p-2">
+          <div className="flex flex-col md:flex-row w-full max-w-screen-lg bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="w-full md:w-1/2 p-2">
               <Image
                 src={`/${race.image}`}
                 alt={`${race.circuit} circuit`}
@@ -27,7 +26,7 @@ export default async function RacePage({ params: { serie } }: Params) {
                 height={900}
               />
             </div>
-            <div className="w-1/2 p-8">
+            <div className="w-full md:w-1/2 p-8">
               <h2 className="text-3xl font-bold mb-4">{race.circuit}</h2>
               <h2 className="text-xl font-semibold mb-4">{race.circuit_configuration}</h2>
               <h2 className="text-lg mb-4">{race.laps} laps</h2>
@@ -44,5 +43,5 @@ export default async function RacePage({ params: { serie } }: Params) {
         </div>
       ))}
     </div>
-  )
+  );
 }
