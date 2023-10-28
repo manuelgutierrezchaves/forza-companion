@@ -15,9 +15,9 @@ export default async function RacePage({ params: { serie } }: Params) {
   const { races } = result
 
   return (
-    <div className="carousel w-full">
+    <div className="carousel w-full pt-28">
       {races?.map((race, index) => (
-        <div key={index} id={`race${index+1}`} className="carousel-item relative w-full min-h-screen flex justify-center items-center">
+        <div key={index} id={`race${index+1}`} className="carousel-item relative w-full flex justify-center items-center">
           <div className="flex w-full max-w-screen-lg bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="w-1/2 p-2">
               <Image
