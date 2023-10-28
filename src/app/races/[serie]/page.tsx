@@ -18,7 +18,7 @@ export default async function RacePage({ params: { serie } }: Params) {
     <div className="carousel w-full">
       {races?.map((race, index) => (
         <div key={index} id={`race${index+1}`} className="carousel-item relative w-full min-h-screen flex justify-center items-center">
-          <div className="flex w-full max-w-screen-lg">
+          <div className="flex w-full max-w-screen-lg bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="w-1/2 p-2">
               <Image
                 src={`/${race.image}`}
@@ -28,11 +28,11 @@ export default async function RacePage({ params: { serie } }: Params) {
               />
             </div>
             <div className="w-1/2 p-8">
-              <h2 className="text-2xl font-bold mb-4">{race.circuit}</h2>
-              <ul className="list-disc pl-4">
-                <li>Laps: {race.laps}</li>
+              <h2 className="text-3xl font-bold mb-4">{race.circuit}</h2>
+              <ul className="list-disc pl-5 mb-8">
+                <li className="text-lg"><strong>Laps:</strong> {race.laps}</li>
               </ul>
-              <h3 className="text-xl font-semibold mb-4 pt-8">Recommended tyre strategy</h3>
+              <h3 className="text-2xl font-semibold mb-4">Recommended tyre strategy</h3>
               <div className="pt-4 pb-4">
                 <TireTracker tireData={[{"hard": 10}, {"soft": 10}, {"wet": 2}]} />
               </div>
