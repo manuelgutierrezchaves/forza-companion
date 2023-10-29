@@ -1,6 +1,8 @@
 import { getRaces } from "@/app/lib/getRaces";
 import Image from "next/image";
 import TireTracker from '@/components/TyreUsedBar';
+import { notFound } from "next/navigation";
+
 
 type Params = {
   params: {
@@ -25,6 +27,9 @@ interface Race {
 export default async function RacePage({ params: { serie } }: Params) {
   const serieAsNumber = parseInt(serie, 10);
   const races: Race[] = await getRaces(serieAsNumber);
+  if (!races?.length) {
+    notFound()
+  }
 
   return (
     <div className="carousel w-full lg:pt-28">
