@@ -3,7 +3,6 @@ import { auth, UserButton } from '@clerk/nextjs';
 
 const Navbar = () => {
   const { userId } = auth()
-  console.log(userId)
 
   return (
     <div className="navbar bg-base-100">
