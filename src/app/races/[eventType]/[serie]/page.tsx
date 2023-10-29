@@ -34,7 +34,7 @@ export default async function RacePage({ params: { serie } }: Params) {
   return (
     <div>
       <RacesCarousel races={races} />
-      <UserTyreForm />
+      <UserTyreForm races={races} />
     </div>
   );
 }

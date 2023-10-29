@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TireTracker from './TyreUsedBar';
 
 type Tyre = "soft" | "medium" | "hard" | "wet";
@@ -17,12 +17,51 @@ interface State {
   currentLaps: string;
 }
 
-const UserTyreForm: React.FC = () => {
+interface TireData {
+  [key: string]: number;
+}
+
+interface Race {
+  id: number,
+  laps: number,
+  circuit: string,
+  circuit_configuration: string,
+  series_id: number,
+  image: string,
+  tyres: TireData[]
+}
+
+interface RacesCarouselProps {
+  races: Race[];
+}
+
+const UserTyreForm: React.FC<RacesCarouselProps> = ({ races }) => {
   const [state, setState] = useState<State>({
     objects: [],
     currentTyre: "soft",
     currentLaps: "",
   });
+  const [currentRace, setCurrentRace] = useState<Race | null>(null);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1); // quitar el '#'
+      const raceId = parseInt(hash.replace('race', ''));
+
+      if (isNaN(raceId)) {
+        setCurrentRace(races[0])
+      } else if (!isNaN(raceId) && raceId <= races.length) {
+        setCurrentRace(races[raceId - 1]);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   const handleAddStint = () => {
     if (state.currentLaps) {
@@ -39,6 +78,7 @@ const UserTyreForm: React.FC = () => {
 
   const handleSave = () => {
     const tireDataToSend = state.objects.map(obj => ({ [obj.tyreTipe]: obj.laps }));
+    const totalLaps = state.objects.reduce((acc, stint) => acc + stint.laps, 0);
     console.log(tireDataToSend)
     // postUserTyres(tireDataToSend);
   };
