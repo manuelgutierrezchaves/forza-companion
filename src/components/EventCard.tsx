@@ -12,7 +12,7 @@ interface Race {
 
 const EventCard = ({ race }: { race: Race }) => {
   return (
-    <Link href={`/races/${race.id}`} className="card w-96 bg-base-100 shadow-xl">
+    <Link href={`/races/${race.type}/${race.id}`} className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <Image
           className="hover:opacity-100 xl:opacity-60 transition-opacity duration-500"
