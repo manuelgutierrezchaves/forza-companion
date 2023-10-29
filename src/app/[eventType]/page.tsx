@@ -1,4 +1,4 @@
-import EventsGrid from "../components/EventsGrid";
+import EventsGrid from "@/components/EventsGrid";
 
 export const revalidate = 60; // Refresh db fetch in seconds
 

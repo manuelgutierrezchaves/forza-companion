@@ -1,6 +1,6 @@
 import { getRaces } from "@/app/lib/getRaces";
 import Image from "next/image";
-import TireTracker from '@/app/components/TyreUsedBar';
+import TireTracker from '@/components/TyreUsedBar';
 
 type Params = {
   params: {

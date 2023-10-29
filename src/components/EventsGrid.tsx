@@ -1,4 +1,4 @@
-import { getEvents } from '../lib/getEvents';
+import { getEvents } from '../app/lib/getEvents';
 import EventCard from './EventCard';
 
 
