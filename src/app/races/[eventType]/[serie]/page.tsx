@@ -1,6 +1,7 @@
 import { getRaces } from "@/app/lib/getRaces";
 import { notFound } from "next/navigation";
 import RacesCarousel from "@/components/RacesCarousel";
+import UserTyreForm from "@/components/UserTyres";
 
 
 type Params = {
@@ -31,6 +32,9 @@ export default async function RacePage({ params: { serie } }: Params) {
   }
 
   return (
-    <RacesCarousel races={races} />
+    <div>
+      <RacesCarousel races={races} />
+      <UserTyreForm />
+    </div>
   );
 }
