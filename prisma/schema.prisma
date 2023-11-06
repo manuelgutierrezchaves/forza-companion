@@ -29,6 +29,18 @@ model races {
   image                   String
   tyres                   Json
   Series                  events    @relation(fields: [series_id], references: [id])
+  user_tyres              user_tyres[]
 
   @@map("races")
+}
+
+
+model user_tyres {
+  id          Int         @id @default(autoincrement())
+  clerk_id    String
+  race_id     Int
+  tyres       Json
+  race        races      @relation(fields: [race_id], references: [id])
+
+  @@map("user_tyres")
 }

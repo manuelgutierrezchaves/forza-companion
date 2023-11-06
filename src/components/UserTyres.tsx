@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import TireTracker from './TyreUsedBar';
+import { postUserTyre } from '@/app/lib/postUserTyres';
 
 type Tyre = "soft" | "medium" | "hard" | "wet";
 const TYRE_OPTIONS: Tyre[] = ["soft", "medium", "hard", "wet"];
@@ -33,9 +34,10 @@ interface Race {
 
 interface RacesCarouselProps {
   races: Race[];
+  userId: string | null
 }
 
-const UserTyreForm: React.FC<RacesCarouselProps> = ({ races }) => {
+const UserTyreForm: React.FC<RacesCarouselProps> = ({ races, userId }) => {
   const [state, setState] = useState<State>({
     objects: [],
     currentTyre: "soft",
@@ -76,11 +78,23 @@ const UserTyreForm: React.FC<RacesCarouselProps> = ({ races }) => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     const tireDataToSend = state.objects.map(obj => ({ [obj.tyreTipe]: obj.laps }));
     const totalLaps = state.objects.reduce((acc, stint) => acc + stint.laps, 0);
-    console.log(tireDataToSend)
-    // postUserTyres(tireDataToSend);
+    if (totalLaps === currentRace?.laps) {
+      console.log(tireDataToSend)
+      const data = {
+        clerk_id: userId,
+        race_id: currentRace.id,
+        tyres: tireDataToSend,
+      }
+      const result = await postUserTyre(data);
+      if (result.error) {
+        console.error("Error:", result.error);
+      } else {
+        console.log("Nuevo user_tyre creado:", result);
+      }
+    }
   };
 
   const handleDeleteStint = () => {

@@ -2,6 +2,7 @@ import { getRaces } from "@/app/lib/getRaces";
 import { notFound } from "next/navigation";
 import RacesCarousel from "@/components/RacesCarousel";
 import UserTyreForm from "@/components/UserTyres";
+import { auth } from "@clerk/nextjs";
 
 
 type Params = {
@@ -25,6 +26,8 @@ interface Race {
 }
 
 export default async function RacePage({ params: { serie } }: Params) {
+  const { userId } : { userId: string | null } = auth();
+  console.log(userId)
   const serieAsNumber = parseInt(serie, 10);
   const races: Race[] = await getRaces(serieAsNumber);
   if (!races?.length) {
@@ -34,7 +37,7 @@ export default async function RacePage({ params: { serie } }: Params) {
   return (
     <div>
       <RacesCarousel races={races} />
-      <UserTyreForm races={races} />
+      <UserTyreForm races={races} userId={userId} />
     </div>
   );
 }
